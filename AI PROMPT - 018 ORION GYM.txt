@@ -1,0 +1,77 @@
+
+Garis Besar:
+Website tipe one page modern dan responsive bisa buka di segala perangkat desktop, tablet, mobile lengkap dengan tag SEO.
+
+==============
+Tentang Organisasi
+- Nama Organisasi: "ORION Gym"
+- Keterangan: Gym tempat olahraga
+- Alamat: Antara Pengadilan Agama & Auri, sebelah Toko Ciro, Jl. Raya Kemiri, Kec. Sentani, Kabupaten Jayapura, Papua
+- Instagram: https://www.instagram.com/oriongym.sentani/
+- No Telp/WA: 0813-4306-0101
+- logo: ./images/images/logo.jpg
+=============
+
+
+Spesifikasi
+- Bahasa: English
+- HTML, CSS Tailwind, Alpine.js, Font Awesome Icon
+- Image placeholder landscape: https://placehold.co/600x400
+- Image placeholder square: https://placehold.co/400
+- Warna Utama: biru laut untuk brand, silver, emas, dan dominan putih
+
+images
+- ./images/cardio-bycile.webp
+- ./images/front-building.webp
+- ./images/front-desk.webp
+- ./images/inside-the-gym.webp
+- ./images/inside-the-gym-2.webp
+- ./images/locker-area.webp
+- ./images/rest-room.webp
+- ./images/shower.webp
+
+Struktur konten
+- nav
+- header
+- section (sesuaikan navigasi)
+- footer
+
+Navigasi
+- Home, Programs, Schedule, Membership, Facilities, Our Trainers, Testimony, Locations, Contact Us
+
+gaya desain Navigasi
+- posisi between dengan urutan logo, judul, menu/navigasi
+- pastikan style active untuk nav ketika menampilkan setiap section dan default di beranda
+
+
+Mobile friendly
+- utamakan tampilan mobile
+- menu navigasi utama muncul di bawah
+
+Gaya Desain & interaksi
+- gaya blur gradation
+- Setiap section memiliki judul dan sub judul (2 kalimat singkat)
+- tampilan mobile memiliki tombol navigasi mobile
+- Logo  di samping judul ada link ke "./"
+- setiap box hover shadow transision
+- setip navigasi scroll transition 
+- setiap program memiliki icon
+- testimoni terdiri dari icon user, teks testimoni, nama lengkap di Bawah
+
+Header
+- Terdiri dari judul, sub judul terdiri dari 2 kalimat penjelasan umum dan singkat, 2 tombol action sub judul yang satu filled dan satunya outline disertai dengan icon. text center
+- slider gambar background zoom in and zoom out 4 detik
+
+Footer
+- terdiri dari 2 kolom
+- kolom kiri: alamat, no telp/wa, icon media social
+- kanan: google map peta jayapura 
+
+Widget
+- tambah tombol bulat instagram & wa di ujung kanan Bawah untuk menirim pesan singkat ke nomor pemilik 
+
+Informasi author
+- Powered by Nokensoft, www.nokensoft.com tambahkan di link footer dan buatkan komentar html untuk lisensi/copyright di bagian 
+
+
+

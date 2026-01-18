@@ -1,0 +1,29 @@
+{
+  "reviews": [
+    {
+      "nama": "JARC Tribe",
+      "ulasan": "Tempatnya nyaman sekali, makan dan minuman enak, cozy, enak buat WFH atau zoom meeting.  Very recommended 👍👍👍",
+      "bintang": 5
+    },
+    {
+      "nama": "Janzen Faidiban",
+      "ulasan": "MeCoffee menawarkan nuansa yang berbeda. Mulai dari sajian beragam mokopi hingga menu makanan khas. Vietnam Drip dari MeCoffee merupakan salah satu minuman favorit saya. Sedangkan makanan, saya suka Nasi Goreng daging domba yang titambah dengan Sosis PNG. Sangat rekomendasi untuk mencoba.",
+      "bintang": 5
+    },
+    {
+      "nama": "Budi Santoso",
+      "ulasan": "Coba Me Coffee Signature, rasanya unik dan belum pernah saya temukan di tempat lain. Pelayanan ramah.",
+      "bintang": 4
+    },
+    {
+      "nama": "Linda Permata",
+      "ulasan": "Sangat direkomendasikan bagi pecinta kopi manual brew. Baristanya sangat paham karakter biji kopi Papua.",
+      "bintang": 5
+    },
+    {
+      "nama": "Rizky Pratama",
+      "ulasan": "Makanan dan snacknya juga enak-enak. Cocok buat nongkrong bareng teman-teman di sore hari.",
+      "bintang": 5
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORION Gym - Premium Fitness Center Sentani</title>
+    <meta name="description" content="Join ORION Gym Sentani for a premium fitness experience. Best equipment, professional trainers, and modern facilities in Jayapura, Papua.">
+    <meta name="keywords" content="Gym Sentani, Fitness Jayapura, ORION Gym, Olahraga Papua">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        [x-cloak] { display: none !important; }
+        .bg-blur-gradient {
+            background: radial-gradient(circle at top left, rgba(0, 119, 190, 0.1), transparent),
+                        radial-gradient(circle at bottom right, rgba(255, 215, 0, 0.1), transparent);
+        }
+        .nav-active { color: #0077be; font-weight: bold; border-bottom: 2px solid #0077be; }
+        
+        @keyframes zoomInOut {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .zoom-bg { animation: zoomInOut 4s infinite ease-in-out; }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans bg-blur-gradient" x-data="{ activeSection: 'home' }">
+
+<nav class="hidden md:flex fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 px-8 py-4 justify-between items-center shadow-sm">
+        <div class="flex items-center gap-3">
+            <a href="./" class="flex items-center gap-2">
+                <img src="./images/logo.jpg" alt="ORION Gym" class="h-10 w-10 rounded-full">
+                <span class="text-xl font-bold text-[#0077be]">ORION GYM</span>
+            </a>
+        </div>
+        <div class="flex gap-6 text-sm font-medium uppercase tracking-wider">
+            <template x-for="item in ['Home', 'Programs', 'Schedule', 'Membership', 'Facilities', 'Trainers', 'Testimony', 'Locations', 'Contact']">
+                <a :href="'#' + item.toLowerCase().replace(' ', '')" 
+                   @click="activeSection = item.toLowerCase().replace(' ', '')"
+                   :class="activeSection === item.toLowerCase().replace(' ', '') ? 'text-[#0077be] border-b-2 border-[#0077be]' : 'hover:text-[#0077be] transition-colors'"
+                   x-text="item"></a>
+            </template>
+        </div>
+    </nav>
+
+    <header id="home" class="relative h-screen flex items-center justify-center overflow-hidden text-center px-4">
+        <div class="absolute inset-0 z-0">
+            <img src="./images/front-building.webp" class="w-full h-full object-cover zoom-bg brightness-50" alt="ORION Gym Front">
+        </div>
+        <div class="relative z-10 text-white max-w-3xl">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-lg">Elevate Your Strength</h1>
+            <p class="text-lg md:text-xl mb-8">Premium fitness destination in the heart of Sentani. Modern equipment and expert guidance to reach your goals.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#membership" class="bg-[#0077be] text-white px-8 py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-blue-700 transition">
+                    <i class="fas fa-id-card"></i> Join Now
+                </a>
+                <a href="#programs" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-white hover:text-blue-900 transition">
+                    <i class="fas fa-play"></i> View Programs
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="space-y-20 pb-32">
+
+        <section id="programs" class="pt-20 px-6 max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Our Programs</h2>
+                <p class="text-gray-500 mt-2">Tailored workouts for every fitness level. Choose your path to success.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 bg-white rounded-2xl shadow-lg border-t-4 border-[#0077be] hover:shadow-2xl transition-all duration-300">
+                    <i class="fas fa-dumbbell text-4xl text-[#ffd700] mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Weight Training</h3>
+                    <p class="text-gray-600">Build lean muscle and increase strength with our professional grade equipment.</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg border-t-4 border-[#0077be] hover:shadow-2xl transition-all duration-300">
+                    <i class="fas fa-heartbeat text-4xl text-[#ffd700] mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Cardio Sessions</h3>
+                    <p class="text-gray-600">Improve your stamina and heart health using our modern treadmill and bicycle fleet.</p>
+                </div>
+                <div class="p-8 bg-white rounded-2xl shadow-lg border-t-4 border-[#0077be] hover:shadow-2xl transition-all duration-300">
+                    <i class="fas fa-users text-4xl text-[#ffd700] mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Personal Training</h3>
+                    <p class="text-gray-600">Get 1-on-1 coaching designed specifically for your body type and fitness goals.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="facilities" class="pt-20 px-6 bg-gray-50 py-16">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold">World Class Facilities</h2>
+                    <p class="text-gray-500 mt-2">Clean, modern, and spacious environments. We provide everything you need.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <img src="./images/cardio-bycile.webp" alt="Cardio" class="rounded-xl shadow-md hover:scale-105 transition">
+                    <img src="./images/inside-the-gym.webp" alt="Gym" class="rounded-xl shadow-md hover:scale-105 transition">
+                    <img src="./images/locker-area.webp" alt="Locker" class="rounded-xl shadow-md hover:scale-105 transition">
+                    <img src="./images/shower.webp" alt="Shower" class="rounded-xl shadow-md hover:scale-105 transition">
+                </div>
+            </div>
+        </section>
+
+        <section id="testimony" class="pt-20 px-6 max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold">What They Say</h2>
+                <p class="text-gray-500 mt-2">Real results from our dedicated members. Join the community today.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition">
+                    <i class="fas fa-quote-left text-[#0077be] mb-4"></i>
+                    <p class="italic text-gray-700 mb-6 text-lg">"Best gym in Sentani! The equipment is brand new and the trainers are very helpful."</p>
+                    <div class="flex items-center gap-4 border-t pt-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center"><i class="fas fa-user text-gray-400"></i></div>
+                        <div>
+                            <p class="font-bold">John Doe</p>
+                            <p class="text-sm text-gray-500">Member since 2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition">
+                    <i class="fas fa-quote-left text-[#0077be] mb-4"></i>
+                    <p class="italic text-gray-700 mb-6 text-lg">"The locker and shower facilities are very clean. Makes me feel comfortable training here every day."</p>
+                    <div class="flex items-center gap-4 border-t pt-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center"><i class="fas fa-user text-gray-400"></i></div>
+                        <div>
+                            <p class="font-bold">Sarah Jane</p>
+                            <p class="text-sm text-gray-500">Fitness Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="locations" class="bg-gray-900 text-white pt-20 pb-32 md:pb-12 px-8">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-2xl font-bold mb-6 text-[#ffd700]">ORION GYM</h3>
+                <p class="mb-4 flex items-start gap-3">
+                    <i class="fas fa-map-marker-alt mt-1 text-[#0077be]"></i>
+                    <span>Jl. Raya Kemiri, Kec. Sentani, Kab. Jayapura, Papua<br>(Between Pengadilan Agama & Auri, next to Toko Ciro)</span>
+                </p>
+                <p class="mb-4 flex items-center gap-3">
+                    <i class="fas fa-phone-alt text-[#0077be]"></i>
+                    <span>0813-4306-0101</span>
+                </p>
+                <div class="flex gap-4 mt-8">
+                    <a href="https://www.instagram.com/oriongym.sentani/" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#0077be] transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/6281343060101" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-green-600 transition">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                <div class="mt-12 text-gray-500 text-sm border-t border-white/10 pt-4">
+                    Powered by <a href="https://www.nokensoft.com" class="text-[#0077be] underline">Nokensoft</a> &copy; 2026 ORION Gym.
+                </div>
+            </div>
+            <div id="contact" class="h-64 md:h-full min-h-[300px] rounded-2xl overflow-hidden shadow-2xl">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15944.3813959828!2d140.4856!3d-2.5833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x686a3df7a6b63755%3A0x1d3780371404179e!2sSentani%2C%20Jayapura%20Regency%2C%20Papua!5e0!3m2!1sen!2sid!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </footer>
+
+    <nav class="md:hidden fixed bottom-0 w-full bg-white border-t flex justify-around items-center py-3 z-[100] shadow-[0_-2px_10px_rgba(0,0,0,0.1)]">
+        <a href="#home" @click="activeSection = 'home'" class="flex flex-col items-center gap-1" :class="activeSection === 'home' ? 'text-[#0077be]' : 'text-gray-400'">
+            <i class="fas fa-home"></i>
+            <span class="text-[10px]">Home</span>
+        </a>
+        <a href="#programs" @click="activeSection = 'programs'" class="flex flex-col items-center gap-1" :class="activeSection === 'programs' ? 'text-[#0077be]' : 'text-gray-400'">
+            <i class="fas fa-dumbbell"></i>
+            <span class="text-[10px]">Programs</span>
+        </a>
+        <a href="#facilities" @click="activeSection = 'facilities'" class="flex flex-col items-center gap-1" :class="activeSection === 'facilities' ? 'text-[#0077be]' : 'text-gray-400'">
+            <i class="fas fa-building"></i>
+            <span class="text-[10px]">Facility</span>
+        </a>
+        <a href="#locations" @click="activeSection = 'locations'" class="flex flex-col items-center gap-1" :class="activeSection === 'locations' ? 'text-[#0077be]' : 'text-gray-400'">
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="text-[10px]">Map</span>
+        </a>
+    </nav>
+
+    <div class="fixed right-6 bottom-24 md:bottom-6 flex flex-col gap-3 z-50">
+        <a href="https://www.instagram.com/oriongym.sentani/" class="w-12 h-12 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
+            <i class="fab fa-instagram text-xl"></i>
+        </a>
+        <a href="https://wa.me/6281343060101?text=Halo%20Orion%20Gym,%20saya%20ingin%20tanya%20membership" class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
+            <i class="fab fa-whatsapp text-xl"></i>
+        </a>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'programs', 'facilities', 'testimony', 'locations'];
+            let current = 'home';
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (window.scrollY >= (element.offsetTop - 100)) {
+                    current = section;
+                }
+            });
+            document.querySelector('[x-data]').__x.$data.activeSection = current;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORION Gym - Premium Fitness Center Sentani</title>
+    
+    <link rel="icon" type="image/jpeg" href="./images/logo.jpg">
+    <link rel="apple-touch-icon" href="./images/logo.jpg">
+    
+    <meta name="description" content="Join ORION Gym Sentani for a premium fitness experience. Best equipment, professional trainers, and modern facilities in Jayapura, Papua.">
+
+    <meta name="keywords" content="Gym Sentani, Fitness Jayapura, ORION Gym, Olahraga Papua">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        [x-cloak] { display: none !important; }
+        
+        /* Dark Theme & Sea Blue Gradient */
+        body {
+            background-color: #020617; /* Slate 950 base */
+        }
+        
+        .bg-dark-marine {
+            background: radial-gradient(circle at top left, rgba(0, 119, 190, 0.15), transparent),
+                        radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.9), #020617);
+        }
+
+        /* Deep Blue Shadow Effect */
+        .shadow-blue-glow {
+            box-shadow: 0 10px 30px -5px rgba(0, 119, 190, 0.3);
+        }
+        .hover-shadow-blue:hover {
+            box-shadow: 0 20px 40px -10px rgba(0, 119, 190, 0.5);
+            transform: translateY(-5px);
+        }
+
+        @keyframes zoomInOut {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .zoom-bg { animation: zoomInOut 4s infinite ease-in-out; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #0077be; border-radius: 10px; }
+
+        /* Efek Background Dots */
+        .bg-dots {
+            background-image: radial-gradient(#1e3a8a 1px, transparent 1px);
+            background-size: 30px 30px; /* Jarak antar titik */
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-zoom-in {
+            animation: zoomIn 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="text-gray-200 font-sans bg-dark-marine" x-data="{ activeSection: 'home' }">
+
+    <nav class="fixed top-0 w-full bg-[#020617]/95 backdrop-blur-lg z-[100] border-b border-blue-900/30" 
+        x-data="{ mobileMenuOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-3 md:py-4 flex justify-between items-center">
+            
+            <div class="flex items-center gap-3">
+                <a href="./" class="flex items-center gap-2 group">
+                    <img src="./images/logo.jpg" alt="ORION Gym" class="h-8 w-8 md:h-10 rounded-full border border-blue-500 shadow-[0_0_10px_rgba(0,119,190,0.5)]">
+                    <span class="text-lg md:text-xl font-black tracking-tighter text-white uppercase">
+                        ORION <span class="text-[#0077be] drop-shadow-[0_0_8px_rgba(0,119,190,0.6)]">GYM</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="hidden md:flex gap-6 text-xs font-semibold uppercase tracking-widest">
+                <template x-for="item in ['Home', 'Programs', 'Schedule', 'Membership', 'Facilities', 'Testimony', 'Locations', 'Contact']">
+                    <a :href="'#' + item.toLowerCase().replace(' ', '')" 
+                    @click="activeSection = item.toLowerCase().replace(' ', '')"
+                    :class="activeSection === item.toLowerCase().replace(' ', '') ? 'text-[#0077be] border-b-2 border-[#0077be]' : 'text-gray-400 hover:text-white transition-all'"
+                    x-text="item"></a>
+                </template>
+            </div>
+
+            <div class="flex items-center gap-4 md:hidden">
+                <a href="#membership" class="text-[10px] font-bold bg-[#0077be] text-white px-3 py-1.5 rounded-lg shadow-blue-glow">
+                    JOIN
+                </a>
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-white text-2xl focus:outline-none">
+                    <i class="fas" :class="mobileMenuOpen ? 'fa-times' : 'fa-bars-staggered'"></i>
+                </button>
+            </div>
+        </div>
+
+        <div x-show="mobileMenuOpen" 
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 -translate-y-full"
+            x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-full"
+            class="absolute top-full left-0 w-full bg-[#020617] border-b border-blue-900/50 py-6 px-8 md:hidden shadow-2xl"
+            @click.away="mobileMenuOpen = false"
+            x-cloak>
+            <div class="flex flex-col gap-5">
+                <template x-for="item in ['Home', 'Programs', 'Schedule', 'Membership', 'Facilities', 'Testimony', 'Locations', 'Contact']">
+                    <a :href="'#' + item.toLowerCase().replace(' ', '')" 
+                    @click="activeSection = item.toLowerCase().replace(' ', ''); mobileMenuOpen = false"
+                    class="text-gray-300 text-lg font-bold uppercase tracking-widest hover:text-[#0077be] transition-colors flex justify-between items-center"
+                    :class="activeSection === item.toLowerCase().replace(' ', '') ? 'text-[#0077be]' : ''">
+                        <span x-text="item"></span>
+                        <i class="fas fa-chevron-right text-[10px] opacity-30"></i>
+                    </a>
+                </template>
+            </div>
+            
+            <div class="flex gap-4 mt-8 pt-6 border-t border-blue-900/20 text-gray-400">
+                <a href="https://www.instagram.com/oriongym.sentani/" class="hover:text-[#0077be]"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="https://wa.me/6281343060101" class="hover:text-green-500"><i class="fab fa-whatsapp text-xl"></i></a>
+                <a href="#" class="hover:text-blue-500"><i class="fab fa-facebook text-xl"></i></a>
+            </div>
+        </div>
+    </nav>
+
+
+    
+    <header id="home" class="relative h-screen flex items-center justify-center overflow-hidden text-center px-4">
+            <div class="absolute inset-0 z-0">
+                <img src="./images/front-building.webp" class="w-full h-full object-cover animate-slow-zoom brightness-[0.25]" alt="ORION Gym Front">
+                <div class="absolute inset-0 bg-gradient-to-b from-[#020617]/20 via-transparent to-[#020617]"></div>
+            </div>
+
+            <div class="relative z-10 max-w-4xl flex flex-col items-center">
+                <div class="mb-6 animate-fade-in-down">
+                    <img src="./images/logo.jpg" alt="ORION Logo" class="h-24 w-24 md:h-32 md:w-32 rounded-full border-4 border-[#0077be] shadow-blue-glow p-1 bg-[#020617]">
+                </div>
+
+                <h1 class="text-5xl md:text-8xl font-black mb-6 tracking-tighter text-white uppercase leading-none drop-shadow-[0_5px_15px_rgba(0,119,190,0.4)]">
+                    ORION <span class="text-[#0077be] inline-block animate-pulse-subtle">GYM</span>
+                </h1>
+
+                <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed font-light italic">
+                    The most elite fitness sanctuary in Sentani. <br> 
+                    <span class="text-white font-medium">Unleash your inner titan</span> with world-class equipment.
+                </p>
+
+                <div class="flex flex-col md:flex-row gap-5 justify-center w-full md:w-auto">
+                    <a href="#membership" class="bg-[#0077be] text-white px-10 py-4 rounded-xl font-black flex items-center justify-center gap-3 hover:bg-blue-600 shadow-blue-glow transition-all active:scale-95 group">
+                        <i class="fas fa-id-card group-hover:rotate-12 transition"></i> START TRAINING
+                    </a>
+                    <a href="#facilities" class="bg-white/5 backdrop-blur-md border-2 border-blue-900/50 text-white px-10 py-4 rounded-xl font-black flex items-center justify-center gap-3 hover:bg-white hover:text-[#020617] transition-all active:scale-95">
+                        <i class="fas fa-dumbbell"></i> THE ARENA
+                    </a>
+                </div>
+                
+                <div class="absolute bottom-10 animate-bounce text-gray-500 opacity-50">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </div>
+            </div>
+        </header>
+
+    <main class="space-y-32 pb-32">
+
+
+
+
+        <section id="programs" class="pt-24 px-6 max-w-7xl mx-auto" 
+            x-data="{ 
+                activeDay: 'Monday',
+                schedules: [
+                    { day: 'Monday', time: '06:00 - 10:00', activity: 'Morning Power Hour', desc: 'Weight & Cardio', intensity: 'Moderate', color: 'green' },
+                    { day: 'Monday', time: '16:00 - 21:00', activity: 'Night Titan Class', desc: 'Heavy Lifting', intensity: 'High', color: 'red' },
+                    { day: 'Tuesday', time: '07:00 - 09:00', activity: 'Cardio Burn', desc: 'Cycling & Running', intensity: 'High', color: 'red' },
+                    { day: 'Tuesday', time: '17:00 - 20:00', activity: 'Body Sculpt', desc: 'Resistance Training', intensity: 'Moderate', color: 'green' },
+                    { day: 'Wednesday', time: '06:00 - 21:00', activity: 'Free Training', desc: 'All Access', intensity: 'Low', color: 'blue' },
+                    { day: 'Thursday', time: '16:00 - 18:00', activity: 'Yoga & Mobility', desc: 'Flexibility', intensity: 'Low', color: 'blue' },
+                    { day: 'Friday', time: '17:00 - 21:00', activity: 'Muscle Madness', desc: 'Powerlifting', intensity: 'High', color: 'red' },
+                    { day: 'Saturday', time: '08:00 - 12:00', activity: 'Weekend Warrior', desc: 'Full Body', intensity: 'Moderate', color: 'green' },
+                    { day: 'Sunday', time: '10:00 - 16:00', activity: 'Active Recovery', desc: 'Light Session', intensity: 'Low', color: 'blue' }
+                ]
+            }">
+            
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Training Schedule</h2>
+                <div class="h-1 w-20 bg-[#0077be] mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-400">Pilih hari untuk melihat jadwal latihan spesifik.</p>
+            </div>
+
+            <div class="flex overflow-x-auto pb-4 md:justify-center gap-3 no-scrollbar">
+                <template x-for="day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']">
+                    <button 
+                        @click="activeDay = day"
+                        :class="activeDay === day ? 'bg-[#0077be] text-white shadow-blue-glow border-[#0077be]' : 'bg-slate-900/50 text-gray-400 border-blue-900/30'"
+                        class="whitespace-nowrap px-6 py-2 rounded-full border font-bold transition-all text-sm uppercase tracking-wider"
+                        x-text="day">
+                    </button>
+                </template>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <template x-for="item in schedules.filter(s => s.day === activeDay)" :key="item.activity + item.time">
+                    <div class="bg-slate-900/50 rounded-2xl border border-blue-900/30 p-6 flex flex-col justify-between hover:border-[#0077be]/50 transition-all group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 bg-blue-900/20 rounded-xl flex items-center justify-center text-[#0077be]">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <span :class="{
+                                'bg-green-900/30 text-green-400 border-green-900/50': item.color === 'green',
+                                'bg-red-900/30 text-red-400 border-red-900/50': item.color === 'red',
+                                'bg-blue-900/30 text-[#0077be] border-blue-900/50': item.color === 'blue'
+                            }" class="text-[10px] font-bold px-3 py-1 rounded-full border uppercase tracking-widest" x-text="item.intensity"></span>
+                        </div>
+
+                        <div>
+                            <h4 class="text-gray-500 text-xs font-mono mb-1" x-text="item.time"></h4>
+                            <h3 class="text-xl font-bold text-white mb-1 group-hover:text-[#0077be] transition" x-text="item.activity"></h3>
+                            <p class="text-gray-400 text-sm" x-text="item.desc"></p>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-blue-900/20 flex justify-between items-center">
+                            <span class="text-[10px] text-gray-500 uppercase font-bold">Orion Sentani</span>
+                            <a href="https://wa.me/6281343060101" class="text-[#0077be] text-sm hover:underline font-bold">Book Slot</a>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <div x-show="schedules.filter(s => s.day === activeDay).length === 0" class="text-center py-20">
+                <p class="text-gray-500 italic font-mono">No specific classes scheduled for this day.</p>
+            </div>
+        </section>
+
+
+
+
+        <section id="schedule" class="pt-24 px-6 max-w-7xl mx-auto" x-data="{ activeDay: 'Monday' }">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Training Schedule</h2>
+                <div class="h-1 w-20 bg-[#0077be] mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-400">Plan your workout routine. We are open daily to help you stay consistent.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <template x-for="day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']">
+                    <button 
+                        @click="activeDay = day"
+                        :class="activeDay === day ? 'bg-[#0077be] text-white shadow-blue-glow border-[#0077be]' : 'bg-slate-900/50 text-gray-400 border-blue-900/30 hover:border-[#0077be]'"
+                        class="px-6 py-2 rounded-full border font-bold transition-all text-sm uppercase tracking-wider"
+                        x-text="day">
+                    </button>
+                </template>
+            </div>
+
+            <div class="bg-slate-900/50 rounded-3xl border border-blue-900/30 overflow-hidden shadow-xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-blue-900/20 text-[#0077be] uppercase text-xs tracking-widest">
+                                <th class="px-8 py-5 font-bold">Time Slot</th>
+                                <th class="px-8 py-5 font-bold">Class / Activity</th>
+                                <th class="px-8 py-5 font-bold">Intensity</th>
+                                <th class="px-8 py-5 font-bold">Availability</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-300 divide-y divide-blue-900/20">
+                            <tr class="hover:bg-blue-500/5 transition">
+                                <td class="px-8 py-6 font-mono">06:00 - 10:00</td>
+                                <td class="px-8 py-6">
+                                    <div class="font-bold text-white">Morning Power Hour</div>
+                                    <div class="text-xs text-gray-500">Weight & Cardio Training</div>
+                                </td>
+                                <td class="px-8 py-6">
+                                    <span class="px-3 py-1 bg-green-900/30 text-green-400 text-[10px] rounded-full font-bold border border-green-900/50">MODERATE</span>
+                                </td>
+                                <td class="px-8 py-6 text-sm">Open for All</td>
+                            </tr>
+                            <tr class="hover:bg-blue-500/5 transition">
+                                <td class="px-8 py-6 font-mono">10:00 - 15:00</td>
+                                <td class="px-8 py-6">
+                                    <div class="font-bold text-white">Mid-Day Shred</div>
+                                    <div class="text-xs text-gray-500">Free Weight & Machines</div>
+                                </td>
+                                <td class="px-8 py-6">
+                                    <span class="px-3 py-1 bg-blue-900/30 text-[#0077be] text-[10px] rounded-full font-bold border border-blue-900/50">LOW</span>
+                                </td>
+                                <td class="px-8 py-6 text-sm">Peak Hours</td>
+                            </tr>
+                            <tr class="hover:bg-blue-500/5 transition">
+                                <td class="px-8 py-6 font-mono">15:00 - 21:00</td>
+                                <td class="px-8 py-6">
+                                    <div class="font-bold text-white">Night Titan Class</div>
+                                    <div class="text-xs text-gray-500">Intensive Personal Training</div>
+                                </td>
+                                <td class="px-8 py-6">
+                                    <span class="px-3 py-1 bg-red-900/30 text-red-400 text-[10px] rounded-full font-bold border border-red-900/50">HIGH</span>
+                                </td>
+                                <td class="px-8 py-6 text-sm">Limited Spots</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <p class="text-center text-gray-500 mt-6 text-sm italic">
+                * Note: Saturday & Sunday hours may vary. Please contact us via <a href="https://wa.me/6281343060101" class="text-[#0077be] hover:underline">WhatsApp</a> for holiday schedules.
+            </p>
+        </section>
+
+
+
+        <section id="membership" class="pt-24 px-6 max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Membership Plans</h2>
+                <div class="h-1 w-20 bg-[#0077be] mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-400">Invest in your health. Choose a plan that fits your lifestyle and fitness goals.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                <div class="p-8 bg-slate-900/40 rounded-3xl border border-blue-900/20 hover:border-blue-500/50 transition-all group relative overflow-hidden">
+                    <h3 class="text-xl font-bold text-gray-300 mb-2">Daily Pass</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-black text-white">IDR 25k</span>
+                        <span class="text-gray-500 text-sm">/visit</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-400">
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[#0077be]"></i> Full Gym Access</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[#0077be]"></i> All Equipment</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check text-[#0077be]"></i> Locker & Shower</li>
+                        <li class="flex items-center gap-3 text-gray-600"><i class="fas fa-times"></i> No Trainer Consultation</li>
+                    </ul>
+                    <a href="https://wa.me/6281343060101" class="block text-center py-3 rounded-xl border border-blue-900/50 text-white font-bold hover:bg-blue-900/30 transition">Get Started</a>
+                </div>
+
+                <div class="p-10 bg-slate-900/80 rounded-3xl border-2 border-[#0077be] shadow-blue-glow transform md:-translate-y-4 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-[#0077be] text-white text-[10px] font-bold px-4 py-1 rounded-bl-xl tracking-widest uppercase">Best Value</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Monthly Member</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-5xl font-black text-white">IDR 250k</span>
+                        <span class="text-gray-400 text-sm">/month</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-white/80">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-[#0077be] text-lg"></i> Unlimited Monthly Access</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-[#0077be] text-lg"></i> Free Fitness Assessment</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-[#0077be] text-lg"></i> Personalized Workout Plan</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-[#0077be] text-lg"></i> Locker & Premium Shower</li>
+                    </ul>
+                    <a href="https://wa.me/6281343060101" class="block text-center py-4 rounded-xl bg-[#0077be] text-white font-bold hover:bg-blue-600 shadow-lg transition transform active:scale-95">JOIN MEMBERSHIP</a>
+                </div>
+
+                <div class="p-8 bg-slate-900/40 rounded-3xl border border-blue-900/20 hover:border-[#ffd700]/50 transition-all group">
+                    <h3 class="text-xl font-bold text-gray-300 mb-2">Annual Titan</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-black text-[#ffd700]">Promo</span>
+                        <span class="text-gray-500 text-sm">/year</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-400">
+                        <li class="flex items-center gap-3"><i class="fas fa-star text-[#ffd700]"></i> Everything in Monthly</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-star text-[#ffd700]"></i> 2 Months Free Access</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-star text-[#ffd700]"></i> Free Orion Gym T-Shirt</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-star text-[#ffd700]"></i> Priority Trainer Support</li>
+                    </ul>
+                    <a href="https://wa.me/6281343060101" class="block text-center py-3 rounded-xl border border-[#ffd700]/30 text-[#ffd700] font-bold hover:bg-[#ffd700]/10 transition">Inquire Now</a>
+                </div>
+            </div>
+            
+            <div class="mt-12 p-6 bg-blue-950/20 rounded-2xl border border-blue-900/30 text-center max-w-2xl mx-auto">
+                <p class="text-sm text-gray-400">
+                    <i class="fas fa-info-circle mr-2 text-[#0077be]"></i> 
+                    Register now and get a **Free Trial Session** for new members in the Sentani area!
+                </p>
+            </div>
+        </section>
+
+
+
+
+        
+        <section id="facilities" 
+            class="relative pt-24 px-6 py-20 overflow-hidden" 
+            x-data="{ openModal: false, imageSrc: '', imageAlt: '' }">
+            
+            <div class="absolute inset-0 bg-dots opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]"></div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-white mb-4">The Arena</h2>
+                    <div class="h-1 w-20 bg-[#0077be] mx-auto rounded-full mb-4"></div>
+                    <p class="text-gray-400">Step inside our high-performance facility. Click any image to view full screen.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <template x-for="img in [
+                        {src: './images/front-building.webp', alt: 'Exterior'},
+                        {src: './images/inside-the-gym.webp', alt: 'Main Floor'},
+                        {src: './images/cardio-bycile.webp', alt: 'Cardio Zone'},
+                        {src: './images/front-desk.webp', alt: 'Reception'},
+                        {src: './images/inside-the-gym-2.webp', alt: 'Strength Area'},
+                        {src: './images/locker-area.webp', alt: 'Private Locker'},
+                        {src: './images/shower.webp', alt: 'Shower'},
+                        {src: './images/rest-room.webp', alt: 'Rest Room'}
+                    ]">
+                        <div @click="imageSrc = img.src; imageAlt = img.alt; openModal = true" 
+                            class="overflow-hidden rounded-2xl border border-blue-900/30 shadow-blue-glow group bg-slate-900 relative cursor-pointer">
+                            <img :src="img.src" :alt="img.alt" class="w-full h-48 md:h-64 object-cover hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
+                            <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-lg text-[10px] text-blue-400 font-bold uppercase tracking-widest" x-text="img.alt"></div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <template x-teleport="body">
+                <div x-show="openModal" 
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="transition ease-in duration-200"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                    class="fixed inset-0 z-[999] flex items-center justify-center bg-black/95 p-4 md:p-10"
+                    x-cloak>
+                    
+                    <button @click="openModal = false" class="absolute top-5 right-5 text-white text-3xl hover:text-blue-400 z-[1001]">
+                        <i class="fas fa-times"></i>
+                    </button>
+
+                    <img :src="imageSrc" :alt="imageAlt" 
+                        @click.away="openModal = false"
+                        class="max-w-full max-h-full object-contain shadow-2xl animate-zoom-in">
+                </div>
+            </template>
+        </section>
+
+
+
+
+
+        <section id="testimony" class="pt-24 px-6 max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white">Warriors' Words</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-slate-900/80 p-8 rounded-3xl border-l-4 border-[#0077be] shadow-lg relative">
+                    <i class="fas fa-quote-right absolute top-6 right-8 text-blue-900/30 text-5xl"></i>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed italic">"Transforming my body at Orion Gym was the best decision of my life. The vibe here is electric!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">JD</div>
+                        <div>
+                            <p class="font-bold text-white">John Doe</p>
+                            <p class="text-sm text-[#0077be]">Member since 2024</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900/80 p-8 rounded-3xl border-l-4 border-[#0077be] shadow-lg relative">
+                    <i class="fas fa-quote-right absolute top-6 right-8 text-blue-900/30 text-5xl"></i>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed italic">"Cleanest gym in Sentani. High quality equipment and very professional staff."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-silver-500 bg-gray-600 rounded-full flex items-center justify-center text-white font-bold">SJ</div>
+                        <div>
+                            <p class="font-bold text-white">Sarah Jane</p>
+                            <p class="text-sm text-[#0077be]">Athlete</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="locations" class="bg-[#020617] text-white pt-24 pb-32 md:pb-16 border-t border-blue-900/30 px-8">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+            <div>
+                <h3 class="text-3xl font-black mb-8 tracking-tighter text-white">ORION <span class="text-[#0077be]">GYM</span></h3>
+                <div class="space-y-6 text-gray-400">
+                    <p class="flex items-start gap-4">
+                        <i class="fas fa-map-marker-alt mt-1 text-[#0077be] text-xl"></i>
+                        <span>Jl. Raya Kemiri, Sentani, Jayapura, Papua<br>
+                        <span class="text-sm text-gray-500 font-medium">(Beside Toko Ciro, Near Pengadilan Agama)</span></span>
+                    </p>
+                    <p class="flex items-center gap-4">
+                        <i class="fas fa-phone-alt text-[#0077be] text-xl"></i>
+                        <span class="text-white font-bold text-lg">0813-4306-0101</span>
+                    </p>
+                </div>
+                
+                
+                <div class="flex flex-wrap gap-4 mt-10">
+                    <a href="https://www.instagram.com/oriongym.sentani/" target="_blank" class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center hover:bg-[#E1306C] transition-all border border-blue-900/30 group">
+                        <i class="fab fa-instagram text-xl group-hover:scale-110 transition"></i>
+                    </a>
+
+                    <a href="#" target="_blank" class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center hover:bg-[#1877F2] transition-all border border-blue-900/30 group">
+                        <i class="fab fa-facebook-f text-xl group-hover:scale-110 transition"></i>
+                    </a>
+
+                    <a href="#" target="_blank" class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center hover:bg-[#000000] transition-all border border-blue-900/30 group">
+                        <i class="fab fa-tiktok text-xl group-hover:scale-110 transition"></i>
+                    </a>
+
+                    <a href="#" target="_blank" class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center hover:bg-[#FF0000] transition-all border border-blue-900/30 group">
+                        <i class="fab fa-youtube text-xl group-hover:scale-110 transition"></i>
+                    </a>
+
+                    <a href="https://wa.me/6281343060101" target="_blank" class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center hover:bg-[#25D366] transition-all border border-blue-900/30 group">
+                        <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition"></i>
+                    </a>
+                </div>
+
+
+                <div class="mt-16 text-gray-600 text-xs">
+                    © 2026 ORION Gym. All Rights Reserved. <br>
+                    Powered by <a href="https://www.nokensoft.com" class="text-blue-800 hover:text-blue-400 transition">Nokensoft</a>
+                </div>
+            </div>
+            <div id="contact" class="h-80 rounded-3xl overflow-hidden border border-blue-900/30 shadow-blue-glow">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6598.584927288563!2d140.48964318486122!3d-2.5588068071598875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x686ceff9b5a6a3f5%3A0xf24a78b3ccb23189!2sORION%20Gym!5e0!3m2!1sid!2sid!4v1768719488307!5m2!1sid!2sid" 
+                    width="100%" height="100%" style="border:0; filter: grayscale(1) invert(0.9) contrast(1.2);" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <nav class="md:hidden fixed bottom-0 w-full bg-[#020617]/95 backdrop-blur-xl border-t border-blue-900/30 flex justify-around items-center py-3 pb-5 z-[100] shadow-[0_-10px_20px_rgba(0,0,0,0.5)]">
+        
+        <a href="#home" @click="activeSection = 'home'" 
+           class="flex flex-col items-center gap-1 transition-all duration-300" 
+           :class="activeSection === 'home' ? 'text-[#0077be] scale-110' : 'text-gray-500'">
+            <div class="relative">
+                <i class="fas fa-home text-lg"></i>
+                <div x-show="activeSection === 'home'" class="absolute -top-1 -right-1 w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
+            </div>
+            <span class="text-[9px] uppercase font-black tracking-tighter">Home</span>
+        </a>
+
+        <a href="#programs" @click="activeSection = 'programs'" 
+           class="flex flex-col items-center gap-1 transition-all duration-300" 
+           :class="activeSection === 'programs' ? 'text-[#0077be] scale-110' : 'text-gray-500'">
+            <div class="relative">
+                <i class="fas fa-bolt text-lg"></i>
+                <div x-show="activeSection === 'programs'" class="absolute -top-1 -right-1 w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
+            </div>
+            <span class="text-[9px] uppercase font-black tracking-tighter">Programs</span>
+        </a>
+
+        <a href="#membership" @click="activeSection = 'membership'" 
+           class="flex flex-col items-center justify-center -translate-y-4 w-14 h-14 bg-[#0077be] text-white rounded-full shadow-blue-glow border-4 border-[#020617] transition-transform active:scale-90">
+            <i class="fas fa-id-card text-xl"></i>
+        </a>
+
+        <a href="#facilities" @click="activeSection = 'facilities'" 
+           class="flex flex-col items-center gap-1 transition-all duration-300" 
+           :class="activeSection === 'facilities' ? 'text-[#0077be] scale-110' : 'text-gray-500'">
+            <div class="relative">
+                <i class="fas fa-dumbbell text-lg"></i>
+                <div x-show="activeSection === 'facilities'" class="absolute -top-1 -right-1 w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
+            </div>
+            <span class="text-[9px] uppercase font-black tracking-tighter">Arena</span>
+        </a>
+
+        <a href="#locations" @click="activeSection = 'locations'" 
+           class="flex flex-col items-center gap-1 transition-all duration-300" 
+           :class="activeSection === 'locations' ? 'text-[#0077be] scale-110' : 'text-gray-500'">
+            <div class="relative">
+                <i class="fas fa-map-marked-alt text-lg"></i>
+                <div x-show="activeSection === 'locations'" class="absolute -top-1 -right-1 w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
+            </div>
+            <span class="text-[9px] uppercase font-black tracking-tighter">Find Us</span>
+        </a>
+    </nav>
+
+
+
+
+    <div class="fixed right-6 bottom-24 md:bottom-8 flex flex-col gap-4 z-50">
+        <a href="https://wa.me/6281343060101" class="w-14 h-14 bg-green-600 text-white rounded-2xl flex items-center justify-center shadow-[0_0_20px_rgba(22,163,74,0.4)] hover:scale-110 transition active:scale-90">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <script>
+        // Scrollspy logic
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'programs', 'facilities', 'testimony', 'locations'];
+            let current = 'home';
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (window.scrollY >= (element.offsetTop - 150)) {
+                    current = section;
+                }
+            });
+            document.querySelector('[x-data]').__x.$data.activeSection = current;
+        });
+    </script>
+</body>
+</html>

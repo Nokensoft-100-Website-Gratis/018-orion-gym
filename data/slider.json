@@ -1,0 +1,18 @@
+{
+  "slides": [
+    {
+      "id": 1,
+      "tag": "Sejak 2018",
+      "title": "Mahakarya <span class='text-primary italic'>Kopi Papua</span>",
+      "desc": "Membawa keunikan cita rasa tanah Papua langsung ke cangkir Anda. Dari apresiasi biji kopi lokal untuk pecinta kopi dunia.",
+      "img": "images/05.png"
+    },
+    {
+      "id": 2,
+      "tag": "Visi Kami",
+      "title": "Jembatan <span class='text-primary italic'>Kopi Dunia</span>",
+      "desc": "Menjadi motor penggerak kesejahteraan petani kopi yang berkelanjutan dan memperkenalkan kemurnian kopi Papua ke panggung global.",
+      "img": "images/04.png"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "categories": [
+    {
+      "name": "Authentic Coffee",
+      "items": [
+        { "name": "Espresso", "price": "15K" },
+        { "name": "Doppio", "price": "24K" },
+        { "name": "Americano (HOT/ICE)", "price": "28K" },
+        { "name": "Long Black Coffee", "price": "28K" },
+        { "name": "Macchiato", "price": "28K" },
+        { "name": "Cappucino (HOT/ICE)", "price": "32K" },
+        { "name": "Affogato", "price": "35K" }
+      ]
+    },
+    {
+      "name": "Manual Brew",
+      "items": [
+        { "name": "V60", "price": "30K" },
+        { "name": "V60 Japanese", "price": "35K" },
+        { "name": "Classic Drip", "price": "32K" }
+      ]
+    },
+    {
+      "name": "Me Coffee Signature",
+      "items": [
+        { "name": "Caramel Macchiato", "price": "32K" },
+        { "name": "Irish Me Coffee", "price": "32K" },
+        { "name": "Me Coffee Milk", "price": "35K" },
+        { "name": "Brown Sugar Coffee", "price": "32K" },
+        { "name": "Kopi Tubruk", "price": "18K" },
+        { "name": "Spiced Me Coffee", "price": "35K" },
+        { "name": "Spiced Lemon Tea", "price": "30K" }
+      ]
+    },
+    {
+      "name": "Non Coffee",
+      "items": [
+        { "name": "Lemon Tea (HOT/ICE)", "price": "38K" },
+        { "name": "Coklat (HOT/ICE)", "price": "38K" },
+        { "name": "Green Tea Latte", "price": "38K" }
+      ]
+    },
+    {
+      "name": "Food",
+      "items": [
+        { "name": "Chicken Katsu", "price": "35K" },
+        { "name": "Chicken Saos Asam Manis", "price": "35K" },
+        { "name": "Sandwich Sosis", "price": "30K" },
+        { "name": "Sandwich Ayam", "price": "30K" },
+        { "name": "Nasi Goreng Spesial", "price": "30K" },
+        { "name": "Mie Goreng Domba", "price": "35K" },
+        { "name": "Nasi Goreng Domba", "price": "35K" },
+        { "name": "Classic Mie Rebus", "price": "28K" }
+      ]
+    },
+    {
+      "name": "Snack",
+      "items": [
+        { "name": "Kentang Goreng", "price": "20K" },
+        { "name": "Roti Bakar Tiramisu", "price": "25K" },
+        { "name": "Roti Bakar Coklat / Keju", "price": "25K" },
+        { "name": "Platter Mixed", "price": "30K" },
+        { "name": "Sosis Domba", "price": "35K" },
+        { "name": "Pisang Goreng Coklat / Keju", "price": "20K" },
+        { "name": "Kasbi Goreng", "price": "20K" },
+        { "name": "Honey Sweet Potato", "price": "20K" }
+      ]
+    }
+  ]
+}
